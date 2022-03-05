@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+import Test from "./Test";
+import Button, {FilterValuesType} from "./Components/Button";
+import Show_Banknots, {MoneyPropsType} from "./Components/Show_Banknots";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+
+    const topCars = [
+        {manufacturer: 'BMW', model: 'm5cs'},
+        {manufacturer: 'Mercedes', model: 'e63s'},
+        {manufacturer: 'Audi', model: 'rs6'}
+    ]
+
+    let [money, setMoney] = useState<Array<MoneyPropsType>>([
+        {banknots: 'Dollars', value: 100, number: ' a1234567890'},
+        {banknots: 'Dollars', value: 50, number: ' z1234567890'},
+        {banknots: 'RUBLS', value: 100, number: ' w1234567890'},
+        {banknots: 'Dollars', value: 100, number: ' e1234567890'},
+        {banknots: 'Dollars', value: 50, number: ' c1234567890'},
+        {banknots: 'RUBLS', value: 100, number: ' r1234567890'},
+        {banknots: 'Dollars', value: 50, number: ' x1234567890'},
+        {banknots: 'RUBLS', value: 50, number: ' v1234567890'},
+    ])
+
+    let [filter, setFilter] = useState<FilterValuesType>("All")
+
+    const filterMoney = (value: FilterValuesType) => {
+        setFilter(value)
+    }
+
+    let moneyForShow_Banknots = money;
+
+    if(filter === "Dollars")
+     moneyForShow_Banknots = money.filter(m => m.banknots === "Dollars");
+
+    if(filter === "RUBLS")
+     moneyForShow_Banknots = money.filter(m => m.banknots === "RUBLS");
+
+
+    return (
+        <div>
+
+            <Test topCars={topCars}/>
+
+            <Show_Banknots money={moneyForShow_Banknots}/>
+            <Button filterMoney={filterMoney}/>
+
+        </div>
+    )
+
+
 }
-
 export default App;
