@@ -1,50 +1,55 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from "react";
+import React, {ChangeEvent, KeyboardEvent} from "react";
 
 
-type InputTypes = {
+{/*type InputTypes = {
     addInputTitle: (banknot: string,
                     valueMoney: number,
                     numberMoney: string) => void
+}*/}
+
+type InputTypes = {
+    inputTitle:string
+    setInputTitle:(inputTitle:string)=>void
+    inputValue:number
+    setInputValue:(inputValue:number)=>void
+    inputNumber:string
+    setInputNumber:(inputNumber:string)=>void
+
 }
 
 const Input = (props: InputTypes) => {
-    const [inputTitle, setInputTitle] = useState('')
-    const [inputValue, setInputValue] = useState(0)
-    const [inputNumber, setInputNumber] = useState('')
 
     const onChangeInputTitle = (event: ChangeEvent<HTMLInputElement>) => {
-        setInputTitle(event.currentTarget.value)
+        props.setInputTitle(event.currentTarget.value)
     }
 
     const onChangeValueMoney = (event: ChangeEvent<HTMLInputElement>) => {
-        setInputValue(Number(event.currentTarget.value))
+        props.setInputValue(Number(event.currentTarget.value))
     }
     const onChangeNumberMoney = (event: ChangeEvent<HTMLInputElement>) => {
-        setInputNumber(event.currentTarget.value)
+        props.setInputNumber(event.currentTarget.value)
     }
 
-    const onClickAddInputTitle = () => {
-        props.addInputTitle(inputTitle, inputValue, inputNumber);
-        setInputTitle('');
-        setInputValue(0);
-        setInputNumber('')
-    }
+
+    {/*
+
+*/}
 
     return (
         <>
             <span> Name money </span>
-            <input value={inputTitle}
+            <input value={props.inputTitle}
                    onChange={onChangeInputTitle}/>
             <br/>
             <span> Value money  </span>
-            <input value={inputValue}
+            <input value={props.inputValue}
                    onChange={onChangeValueMoney}/>
             <br/>
             <span> Number money </span>
-            <input value={inputNumber}
+            <input value={props.inputNumber}
                    onChange={onChangeNumberMoney}/>
             <br/>
-            <button onClick={onClickAddInputTitle}> Add money</button>
+
         </>
     )
 }

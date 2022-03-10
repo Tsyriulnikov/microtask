@@ -3,6 +3,8 @@ import Test from "./Test";
 import Button, {FilterValuesType} from "./Components/Button";
 import Show_Banknots, {MoneyPropsType} from "./Components/Show_Banknots";
 import Input from "./Components/Input";
+import {ButtonAddMoney} from "./Components/ButtonAddMoney";
+//import {ButtonAddMoney} from "./Components/ButtonAddMoney";
 
 const App = () => {
 
@@ -25,6 +27,11 @@ const App = () => {
 
     let [filter, setFilter] = useState<FilterValuesType>("All")
 
+    const [inputTitle, setInputTitle] = useState('')
+    const [inputValue, setInputValue] = useState(0)
+    const [inputNumber, setInputNumber] = useState('')
+
+
     const filterMoney = (value: FilterValuesType) => {
         setFilter(value)
     }
@@ -34,6 +41,15 @@ const App = () => {
         setMoney([newMoney, ...money])
 
     }
+
+
+    const onClickAddInputTitle = () => {
+        addInputTitle(inputTitle, inputValue, inputNumber);
+        setInputTitle('');
+        setInputValue(0);
+        setInputNumber('')
+    }
+
 
     let moneyForShow_Banknots = money;
 
@@ -53,7 +69,10 @@ const App = () => {
             <Show_Banknots money={moneyForShow_Banknots}/>
             <Button filterMoney={filterMoney}/>
             <br/>
-            <Input addInputTitle={addInputTitle}/>
+            <Input inputTitle={inputTitle}
+                   setInputTitle={setInputTitle} inputValue={inputValue} setInputValue={setInputValue}
+                   inputNumber={inputNumber} setInputNumber={setInputNumber}/>
+            <ButtonAddMoney name={"Add money"} callBack={onClickAddInputTitle}/>
 
         </div>
     )
