@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Test from "./Test";
 import Button, {FilterValuesType} from "./Components/Button";
 import Show_Banknots, {MoneyPropsType} from "./Components/Show_Banknots";
+import Input from "./Components/Input";
 
 const App = () => {
 
@@ -28,13 +29,20 @@ const App = () => {
         setFilter(value)
     }
 
+    const addInputTitle = (banknot: string, valueMoney: number, numberMoney: string) => {
+        const newMoney = {banknots: banknot, value: valueMoney, number: numberMoney}
+        setMoney([newMoney, ...money])
+
+    }
+
     let moneyForShow_Banknots = money;
 
-    if(filter === "Dollars")
-     moneyForShow_Banknots = money.filter(m => m.banknots === "Dollars");
+    if (filter === "Dollars")
+        moneyForShow_Banknots = money.filter(m => m.banknots === "Dollars");
 
-    if(filter === "RUBLS")
-     moneyForShow_Banknots = money.filter(m => m.banknots === "RUBLS");
+    if (filter === "RUBLS")
+
+        moneyForShow_Banknots = money.filter(m => m.banknots === "RUBLS");
 
 
     return (
@@ -44,10 +52,10 @@ const App = () => {
 
             <Show_Banknots money={moneyForShow_Banknots}/>
             <Button filterMoney={filterMoney}/>
+            <br/>
+            <Input addInputTitle={addInputTitle}/>
 
         </div>
     )
-
-
 }
 export default App;
