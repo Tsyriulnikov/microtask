@@ -1,11 +1,4 @@
-import React, {ChangeEvent, KeyboardEvent} from "react";
-
-
-{/*type InputTypes = {
-    addInputTitle: (banknot: string,
-                    valueMoney: number,
-                    numberMoney: string) => void
-}*/}
+import React, {ChangeEvent} from "react";
 
 type InputTypes = {
     inputTitle:string
@@ -29,11 +22,6 @@ const Input = (props: InputTypes) => {
     const onChangeNumberMoney = (event: ChangeEvent<HTMLInputElement>) => {
         props.setInputNumber(event.currentTarget.value)
     }
-
-
-    {/*
-
-*/}
 
     return (
         <>
