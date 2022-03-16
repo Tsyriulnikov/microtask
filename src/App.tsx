@@ -1,10 +1,15 @@
 import React, {useState} from "react";
 import Test from "./Test";
-import Button, {FilterValuesType} from "./Components/Button";
+import Button from "./Components/Button";
 import Show_Banknots, {MoneyPropsType} from "./Components/Show_Banknots";
 import Input from "./Components/Input";
 import {ButtonAddMoney} from "./Components/ButtonAddMoney";
 import {Trening_Input} from "./TreningInput/Trening_Input";
+import  s from './App.module.css'
+
+
+type FilterValuesType = "All" | "Dollars" | "RUBLS"
+
 
 const App = () => {
 
@@ -62,13 +67,22 @@ const App = () => {
         moneyForShow_Banknots = money.filter(m => m.banknots === "RUBLS");
 
 
+    const onClickButtonHandler = (name:FilterValuesType) => {
+    filterMoney(name)
+    }
+
+
     return (
         <div>
 
             <Test topCars={topCars}/>
 
             <Show_Banknots money={moneyForShow_Banknots}/>
-            <Button filterMoney={filterMoney}/>
+            <div>
+            <Button  onClickButtonHandler={onClickButtonHandler} name={"All"} text={"All"} style={s.button7}/>
+            <Button  onClickButtonHandler={onClickButtonHandler} name={"Dollars"} text={"Dollars"} style={s.button7}/>
+            <Button  onClickButtonHandler={onClickButtonHandler} name={"RUBLS"} text={"Rubls"} style={s.button7}/>
+            </div>
             <br/>
             <Input inputTitle={inputTitle}
                    setInputTitle={setInputTitle} inputValue={inputValue} setInputValue={setInputValue}

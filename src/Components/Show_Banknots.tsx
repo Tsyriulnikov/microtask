@@ -18,6 +18,7 @@ const Show_Banknots = (props:MoneyType) => {
                     <td>{el.banknots}</td>
                     <td>{el.value}</td>
                     <td>{el.number}</td>
+                    <td><input type="checkbox"/></td>
                 </tr>
             )
         }

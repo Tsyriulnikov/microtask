@@ -1,30 +1,22 @@
 import React from "react";
 
 type ButtonPropsType = {
-    filterMoney: (value: FilterValuesType) => void
+
+    onClickButtonHandler: (name: any) => void
+    name: any
+    text: string
+style:string
 }
-export type FilterValuesType = "All" | "Dollars" | "RUBLS"
 
 
 const Button = (props: ButtonPropsType) => {
 
     return (
-        <div>
-            <button onClick={() => {
-                props.filterMoney("All")
-            }}>All
-            </button>
-
-            <button onClick={() => {
-                props.filterMoney("Dollars")
-            }}> Dollars
-            </button>
-
-            <button onClick={() => {
-                props.filterMoney("RUBLS")
-            }}>Rbls
-            </button>
-        </div>
+        <button
+            className={props.style}
+            onClick={() => {
+            props.onClickButtonHandler(props.name)
+        }}>{props.text}</button>
     )
 
 };
