@@ -2,21 +2,21 @@ import React from "react";
 
 type ButtonPropsType = {
 
-    onClickButtonHandler: (name: any) => void
-    name: any
-    text: string
-style:string
+    onClickButtonCallBack: () => void
+    name: string
+    style: string
 }
 
 
 const Button = (props: ButtonPropsType) => {
+    const onClickButtonHandler = () => {
+        props.onClickButtonCallBack()
+    }
 
     return (
         <button
             className={props.style}
-            onClick={() => {
-            props.onClickButtonHandler(props.name)
-        }}>{props.text}</button>
+            onClick={onClickButtonHandler}>{props.name}</button>
     )
 
 };

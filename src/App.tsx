@@ -79,9 +79,9 @@ const App = () => {
 
             <Show_Banknots money={moneyForShow_Banknots}/>
             <div>
-            <Button  onClickButtonHandler={onClickButtonHandler} name={"All"} text={"All"} style={s.button7}/>
-            <Button  onClickButtonHandler={onClickButtonHandler} name={"Dollars"} text={"Dollars"} style={s.button7}/>
-            <Button  onClickButtonHandler={onClickButtonHandler} name={"RUBLS"} text={"Rubls"} style={s.button7}/>
+            <Button  onClickButtonCallBack={()=>onClickButtonHandler("All")} name={"All"} style={s.button7}/>
+            <Button  onClickButtonCallBack={()=>onClickButtonHandler("Dollars")} name={"Dollars"} style={s.button7}/>
+            <Button  onClickButtonCallBack={()=>onClickButtonHandler("RUBLS")} name={"RUBLS"} style={s.button7}/>
             </div>
             <br/>
             <Input inputTitle={inputTitle}
