@@ -2,13 +2,15 @@ import React from "react";
 
 
 type CarsPropsType = {
-    manufacturer:string
-    model:string
+ manufacturer:string
+ model:string
 }
 
 type TestType = {
-    topCars:CarsPropsType[]
+ topCars:CarsPropsType[]
+
 }
+
 
 const Test = (props:TestType ) => {
 
